@@ -10,6 +10,8 @@ connectDB()
 
 const app = express()
 
+console.log(process.env.SMTP_USER)
+
 // middleware 
 
 app.use(cors())
