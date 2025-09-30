@@ -17,6 +17,7 @@ console.log(process.env.SMTP_USER)
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({credentials:true}))
 
 // default route 
