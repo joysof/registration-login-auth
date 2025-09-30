@@ -24,6 +24,7 @@ app.get('/' ,(req,res) =>{
     res.send('Server is running api is working')
 })
 
+
 // api end points 
 
 app.use('/api/auth' , authRouter)
