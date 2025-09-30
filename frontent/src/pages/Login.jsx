@@ -27,6 +27,7 @@ const Login = () => {
       name, email , password
     })  
       if(data.success){
+         localStorage.setItem("userId", data.user._id); 
         setIsLoggedin(true)
         getUserData()
         navigate('/')
@@ -38,9 +39,11 @@ const Login = () => {
       email , password
     })  
       if(data.success){
+        localStorage.setItem("userId", data.user._id) 
         setIsLoggedin(true)
         getUserData()
         navigate('/')
+        
       }else{
         toast.error(data.message)
       }
