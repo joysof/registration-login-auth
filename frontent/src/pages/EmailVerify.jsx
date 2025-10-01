@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import axios from 'axios'
@@ -10,7 +10,7 @@ const EmailVerify = () => {
   axios.defaults.withCredentials = true
   const navigate = useNavigate()
   const inputRefs = React.useRef([])
-  const { backend_url , userData ,getUserData, setUserData,isLoggedin} = useContext(AppContext)  
+  const { backend_url , userData ,getUserData,isLoggedin} = useContext(AppContext)  
   
   const handleInput = (e , index) =>{
     if (e.target.value.length > 0 && index < inputRefs.current.length - 1) {
@@ -50,6 +50,9 @@ const EmailVerify = () => {
       toast.error(error.message)
     }
   }
+  useEffect(() =>{
+    isLoggedin && userData && userData.isAccountVerified && navigate('/')
+  } , [isLoggedin , userData])
   return (
     <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400'>
           <img onClick={() =>navigate('/')}  className=' absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer' src={assets.logo} alt="" />
